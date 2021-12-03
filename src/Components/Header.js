@@ -6,8 +6,13 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import {Link , useNavigate} from 'react-router-dom'
+import {useState} from 'react'
+
 
 const Header = (props) => {
+  let navigation = useNavigate()
+  const [search , setSearch] = useState("")
    let exp = "header comp"
   return (
     <div className="header">
@@ -21,8 +26,8 @@ const Header = (props) => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="#action1" onClick={()=> props.setSection("home")}>Home</Nav.Link>
-              <Nav.Link href="#action2" onClick={()=> props.setSection("newest")}>Newest</Nav.Link>
+              <Nav.Link  > <Link className="itemList" to="/">Home</Link></Nav.Link>
+              <Nav.Link  ><Link className="itemList" to="/newest">Newest</Link></Nav.Link>
             </Nav>
             <Form className="d-flex">
               <FormControl
@@ -30,8 +35,11 @@ const Header = (props) => {
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
+                onChange={(e)=>{setSearch(e.target.value)}}
               />
-              <Button variant="outline-success">Search</Button>
+              <Button 
+              variant="outline-success"
+              onClick={()=>{navigation(`search/${search}`)}}>Search</Button>
             </Form>
           </Navbar.Collapse>
         </Container>

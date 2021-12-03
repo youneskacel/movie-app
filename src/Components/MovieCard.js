@@ -1,9 +1,10 @@
 import {Card , Button} from 'react-bootstrap'
 import Rating from '@mui/material/Rating';
 import {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 
 const MovieCard = (props) => {
-
+ const navigate = useNavigate()
  const [desc,setDesc] = useState(false)
     return (
         <div className="movieCard">
@@ -12,6 +13,7 @@ const MovieCard = (props) => {
   <Card.Body>
     <Card.Title>{props.movie.original_title}</Card.Title>
     <Button variant="primary" onClick={()=> setDesc(!desc)}>Show description</Button>
+    <Button variant="primary" onClick={ () => {navigate(`/movie/${props.movie.id}`)}} >  to movie page </Button>
     { desc &&
     <Card.Text>
       <div>

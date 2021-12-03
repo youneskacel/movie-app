@@ -66,3 +66,13 @@
   margin : 10px 0;
   color : gray;
 }
+
+.itemList{
+  text-decoration: none;
+  color : grey;
+}
+
+.description{
+  width : 70vw;
+  font-size: 0.9rem;
+}
